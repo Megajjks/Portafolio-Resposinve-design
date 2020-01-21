@@ -59,6 +59,41 @@ valores */
 }
 
 
+/* Icono de menu en font */
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?lihue0');
+  src:  url('../fonts/icomoon.eot?lihue0#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?lihue0') format('truetype'),
+    url('../fonts/icomoon.woff?lihue0') format('woff'),
+    url('../fonts/icomoon.svg?lihue0#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-menu:before {
+  content: "\e9bd";
+  color: #fafafa;
+}
+
+/* Continua mi hoja de cascada */
+
 body {
   font-family: 'Source Sans Pro', sans-serif;
   margin: 0;
@@ -178,7 +213,7 @@ h2 {
   width: 50%;
 }
 
-.project-imageContainer img {
+.project-imageContainer img{
   max-width: 100%;
 }
 
@@ -362,7 +397,7 @@ figure {
   /* border: 1px solid red; */
   max-width: 1000px;
   /* width: 100%; */
-  flex: 1;
+  flex:1;
   margin: 0 auto;
   display: inherit;
   justify-content: inherit;
@@ -371,112 +406,111 @@ figure {
   flex-wrap: inherit;
 }
 
-.burger-button {
+.youtube-video{
+  /* width: 100%;
+  height: auto;  funciona para la etiquta video no iframe*/
+  /* max-width: 100%; */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.flexible-video{
+  width: 100%;
+  height: 0;
+  padding-top: 56.25%; /* (heigth*100)/width */
+  background-color: blue;
+  position: relative;
+}
+
+.burguer-menu{
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, .8);
+  background-color: rgba(27, 33, 39, 0.822);
   display: none;
+  /* Una forma de centrar con block correspondiente al height */
   line-height: 40px;
   text-align: center;
   position: fixed;
   z-index: 4;
   left: 5px;
-  top: 5px;
-  color: white;
+  top:5px;
 }
 
-/* desktop first que empieces desde el MQ más grande */
+/* Media Query */
 
-@media screen and (max-width: 1023px) {
-  .event-list-title {
+/* Mobile first
+Desde medidas iniciales en la que van las pantallas.
+
+@ media screenand (min-width:320 px){}
+@ media screenand (min-width:480 px){}
+@ media screenand (min-width:768 px){}
+@ media screenand (min-width:1024 px){}
+
+Desktop first
+Hasta medidas máximas que las pantallas pueden alcanzar, por como dice su nombre suelen ser medidas ´para ordenadores, o pantallas grandes.
+
+@ media screenand (max-width:1024 px){}
+@ media screenand (max-width:768 px){}
+@ media screenand (max-width:480 px){}
+@ media screenand (max-width:320: px){}
+Combinación de Medias Queries
+
+@media screen and (max-width: 768px) and (min-width: 480px) {}
+*/
+
+/* Desktop first  que empiece desde el Media Query más grande */
+
+@media screen and (max-width: 1023px) { 
+  .event-list-title{
     margin-left: 0;
   }
-  .portfolio {
+  .portfolio{
     padding: 0;
   }
-  .container {
+  .container{
     padding: 0 1em;
   }
-  .hero {
+  .hero{
     height: auto;
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /*con esto evitamos que la imagen se desborde*/
     padding: 2em;
   }
-  .hero-image {
+  .hero-image{
     position: absolute;
     z-index: 1;
-    left: 0;
-    right: 0;
     top: 0;
+    right: 0;
     bottom: 0;
+    left: 0;
     width: 100%;
   }
-  h1 {
+  h1{
     font-size: 2em;
     z-index: 2;
   }
 }
 
-.html-video {
-  width: 100%;
-  height: auto;
-  /* max-width: 100%; */
-}
-
-.youtube-video {
-  /* width: 100%; */
-  /* height: auto; */
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.flexible-video {
-  width: 100%;
-  height: 0;
-  padding-top: 56.25%;
-  background: blue;
-  position: relative;
-}
-
-@media screen and (max-width: 767px) {
-  h2 {
+@media screen and (max-width: 767px){
+  h2{
     font-size: 1.2em;
     margin: .5em 0;
   }
-  .burger-button {
+  /* Creando el menu hamburguesa */
+  .burguer-menu{
     display: block;
   }
-  .header {
-    display: block;
-    height: auto;
-  }
-  .header ol {
-    display: block;
-  }
-  .header ol li {
-    height: 50px;
-  }
-  .header a {
-    justify-content: center;
-    height: 40px;
-    font-size: 2em;
-    text-decoration: underline;
-    margin-bottom: .5em;
-  }
-  .header .logo {
-    text-align: center;
-  }
-
-  .menu {
+  .menu{
     position: fixed;
-    background: rgba(5, 111, 255, .9);
+    /* Gradiente */
+    background: #373B44;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4286f4ea, rgba(55, 59, 68, 0.925));  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4286f4ea, rgba(55, 59, 68, 0.925)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     z-index: 3;
     top: 0;
     left: -100vw;
@@ -488,101 +522,112 @@ figure {
     justify-content: center;
     transition: .3s;
   }
-  .menu.is-active {
+  .menu.is-active{
     left: 0;
   }
 
-  .project {
+  .header{
     display: block;
+    height: auto;
   }
-  .project-imageContainer {
-    width: auto;
+  .header ol{
+    display: initial; /*Sera block ya que ese valor tuvo al principio*/
+  }
+  .header ol li{
+    height: 50px;
+  }
+  .header a{
+    justify-content: center;
+    height: 40px;
+    font-size: 2em;
+    margin-bottom: .5em;
+  }
+  .header a:hover{
+    transition: .3s;
+    text-decoration: underline;
+  }
+  .header .logo{
     text-align: center;
   }
-  .project-details {
-    width: auto;
-    /* font-size: 10px; */
+  .project{
+    display: block;
   }
-  .project-course, .project-date, .project-url { 
+  .project-details{
+    width: auto;
+    font-size: 16px;
+  }
+  .project-course, .project-date, .project-url{
     margin: .3em 0;
   }
-  .project-title {
+  .project-title{
     font-size: 1.5em;
     margin-bottom: .3em;
   }
-  .project-url {
+  .project-url{
     font-size: 1em;
-
   }
-  .project-course {
+  .project-course{
     font-size: .7em;
-
   }
-  .project-date {
+  .project-date{
     font-size: 1em;
-
   }
-  .project-description {
+  .project-description{
     font-size: 1em;
-
   }
-
-  .event {
+  .project-imageContainer{
     width: auto;
-    flex-shrink: initial;
+    text-align: center;
   }
-
-  .event img {
+  .event{
+    width: auto;
+    flex-shrink: 1;
+  }
+  .event img{
     width: 100%;
   }
 }
 
-@media screen and (max-width: 480px) {
-  h1 {
+@media screen and (max-width: 480px){
+  h1{
     font-size: 1.5em;
   }
-  .project-details {
+  .project-details{
     font-size: 14px;
   }
-
-  .event-detail {
-    /* 1em = 16px */
+  .event-detail{
     margin: -2em .5em .5em;
     padding: 1em;
   }
-
-  .contact {
+  .contact{
+    display:block;
     height: auto;
     padding: 1.5em 0;
     text-align: center;
-    display: block;
   }
-  .form-email button {
+  .form-email button{
     margin: 1em auto;
   }
-  .form-email h3 {
-    margin-top: 0;
+  .form-email h3{
+    margin-top:0;
   }
-  .footer {
+  .footer{
     display: block;
     text-align: center;
-    border: 1px solid transparent;
+    border: 1px solid transparent
   }
-  .social-link {
+  .social-link{
     width: 40px;
     height: 40px;
     background-size: 100%;
   }
 }
 
-
-@media screen and (max-width: 320px) {
-  h1 {
+@media screen and (max-width: 320px){
+  h1{
     font-size: 1.2em;
-    /* background: rgba(0,0,0,.5) */
   }
-  .hero {
+  .hero{
     padding: 2em 1em;
   }
 }
-

@@ -2,22 +2,21 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Leonidas Esteban</title>
+    <title>Jayro Salazar</title>
     <link rel="icon" type="image/png" href="images/favicon.png" />
     <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Source+Sans+Pro" rel="stylesheet">
     <!-- <link rel="stylesheet" href="css/media.css" media="screen and (max-width:768px)"/> -->
     <link rel="stylesheet" href="css/estilos.css">
+    <!-- <link rel="stylesheet" href="css/media.css" media="screen and (max-width:768px)"> Forma de traer una mediaQuery en archivos separados -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <!-- <style>
       @media screen and (max-width: 768px) {
-        body {
-          border: 10px solid blue;
-        }
+        body{ border: 10px solid #0000ff }
       }
     </style> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1"> 
   </head>
   <body>
-    <i class="icon-menu burger-button" id="burger-menu"></i>
+     <i class="icon-menu burguer-menu" id="burger-menu"></i>  <!--Se usa para definiar una italica pero nuestro icono en fuente no tiene aquello así que no pasa nada, tambien puede ser con el tag span-->
     <header class="header">
       <div class="container">
         <figure class="logo">
@@ -41,7 +40,7 @@
     <section class="hero">
       <div class="container">
         <h1>
-          Hola! Soy <strong>Leonidas Esteban</strong> <br/> Desarrollador  <strong>Javascript</strong> con <br> pasión por la <strong>enseñanza</strong>
+          Hola! Soy <strong>Jayro Salazar</strong> <br/> Frontend Developer  <strong>React</strong> <br> pasión por la <strong>creación</strong> <br> de productos innovadores
         </h1>
         <img class="hero-image" src="images/hero.jpg" width="500" height="300" alt="imagen principal del sitio"> 
       </div>
@@ -122,7 +121,9 @@
         </article>
         <article class="event">
           <figure class="event-imageContainer">
-            <img class="event-image" src="images/platzi-conf.jpg" width="500" />
+            <div class="flexible-video">
+              <iframe class="youtube-video" width="560" height="315" src="https://www.youtube.com/embed/LoKvxCSZw5w" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
           </figure>
           <div class="event-detail">
             <h3 class="event-title">PlatziConf México 2018</h3>
@@ -160,33 +161,37 @@
       </div>
     </footer>
     <script>
-      // console.log('Hola mundo! es mi primera linea en JS');
-      const ipad = window.matchMedia('screen and (max-width: 767px)')
+
       const menu = document.querySelector('.menu');
-      // console.log(menu);
-      const burgerButton = document.querySelector('#burger-menu');
-      // console.log(burgerButton);
+      const burgerbutton = document.querySelector('#burger-menu')
+      const ipad =window.matchMedia('screen and (max-width: 767px)')      
 
+      //declarando la función que valida si la clase se pone o no  usando arrowfunction
+      const hideshow = () =>{
+        if(!(menu.classList.contains('is-active'))){ //Sino tiene la clase is-active agregala y si la tiene remuevela
+          menu.classList.add('is-active')
+        } 
+        else{
+          menu.classList.remove('is-active')
+        }
+      }
 
+      //Validamos que estemos en una pantalla de 767px para usar las acciones del buton      
+      const validation = (event) =>{
+        if(event.matches){
+          //Agregamos el evento para que escuche cuando haga un click la función recibe dos parametros
+          // lo que quiere que se escuche y que va a pasar (una función)
+          //en este caso ponemos click ya que eso queremos escuchar y en el otro la función
+          burgerbutton.addEventListener('click', hideshow );
+        }else{
+          burgerbutton.removeEventListener('click', hideshow );
+        }
+        console.log(event.matches)
+      }
+
+      //agregando un escuchador a nuestra variable que se encargara de saber si esta en una resolución de 767px
       ipad.addListener(validation)
+      validation(ipad)
 
-      function validation(event) {
-        if (event.matches) {
-          burgerButton.addEventListener('click', hideShow)
-        } else {
-          burgerButton.removeEventListener('click', hideShow)
-        }
-      }
-      validation(ipad);
-
-
-      function hideShow() {
-        if (menu.classList.contains('is-active')) {
-          menu.classList.remove('is-active');
-        } else {
-          menu.classList.add('is-active');
-        }
-      }
     </script>
-  </body>
 </html>

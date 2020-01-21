@@ -28,6 +28,41 @@ valores */
 /* background gris = #1b2127 */
 /* celeste = #026fff */
 
+/* Icono de menu en font */
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?lihue0');
+  src:  url('../fonts/icomoon.eot?lihue0#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?lihue0') format('truetype'),
+    url('../fonts/icomoon.woff?lihue0') format('woff'),
+    url('../fonts/icomoon.svg?lihue0#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-menu:before {
+  content: "\e9bd";
+  color: #fafafa;
+}
+
+/* Continua mi hoja de cascada */
+
 body {
   font-family: 'Source Sans Pro', sans-serif;
   margin: 0;
@@ -341,6 +376,41 @@ figure {
   flex-wrap: inherit;
 }
 
+.youtube-video{
+  /* width: 100%;
+  height: auto;  funciona para la etiquta video no iframe*/
+  /* max-width: 100%; */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.flexible-video{
+  width: 100%;
+  height: 0;
+  padding-top: 56.25%; /* (heigth*100)/width */
+  background-color: blue;
+  position: relative;
+}
+
+.burguer-menu{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(27, 33, 39, 0.822);
+  display: none;
+  /* Una forma de centrar con block correspondiente al height */
+  line-height: 40px;
+  text-align: center;
+  position: fixed;
+  z-index: 4;
+  left: 5px;
+  top:5px;
+}
+
 /* Media Query */
 
 /* 
@@ -365,10 +435,34 @@ Combinación de Medias Queries
 /* Desktop first  que empiece desde el Media Query más grande */
 
 @media screen and (max-width: 1024px) { 
-  
+  .container{
+    padding: 0 1em;
+  }
+  .hero{
+    height: auto;
+    position: relative;
+    overflow: hidden; /*con esto evitamos que la imagen se desborde*/
+    padding: 2em;
+  }
+  .hero-image{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+  h1{
+    font-size: 2em;
+    z-index: 2;
+  }
 }
 
 @media screen and (max-width: 767px){
+  .burguer-menu{
+    display: block;
+  }
   .header{
     display: block;
     height: auto;
@@ -425,6 +519,9 @@ Combinación de Medias Queries
 }
 
 @media screen and (max-width: 480px){
+  h1{
+    font-size: 1.5em;
+  }
   .project-details{
     font-size: 12px;
   }
@@ -432,8 +529,30 @@ Combinación de Medias Queries
     margin: -2em .5em .5em;
     padding: 1em;
   }
+  .contact{
+    display:block;
+    height: auto;
+    padding: 1.5em 0;
+    text-align: center;
+  }
+  .form-email button{
+    margin: 1em auto;
+  }
+  .form-email h3{
+    margin-top:0;
+  }
+  .footer{
+    display: block;
+    text-align: center;
+    border: 1px solid transparent
+  }
 }
 
 @media screen and (max-width: 320px){
-
+  h1{
+    font-size: 1.2em;
+  }
+  .hero{
+    padding: 2em 1em;
+  }
 }

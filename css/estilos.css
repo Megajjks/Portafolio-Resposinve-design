@@ -413,13 +413,14 @@ figure {
 
 /* Media Query */
 
-/* 
+/* Mobile first
 Desde medidas iniciales en la que van las pantallas.
 
 @ media screenand (min-width:320 px){}
 @ media screenand (min-width:480 px){}
 @ media screenand (min-width:768 px){}
 @ media screenand (min-width:1024 px){}
+
 Desktop first
 Hasta medidas máximas que las pantallas pueden alcanzar, por como dice su nombre suelen ser medidas ´para ordenadores, o pantallas grandes.
 
@@ -434,7 +435,13 @@ Combinación de Medias Queries
 
 /* Desktop first  que empiece desde el Media Query más grande */
 
-@media screen and (max-width: 1024px) { 
+@media screen and (max-width: 1023px) { 
+  .event-list-title{
+    margin-left: 0;
+  }
+  .portfolio{
+    padding: 0;
+  }
   .container{
     padding: 0 1em;
   }
@@ -460,6 +467,10 @@ Combinación de Medias Queries
 }
 
 @media screen and (max-width: 767px){
+  h2{
+    font-size: 1.2em;
+    margin: .5em 0;
+  }
   /* Creando el menu hamburguesa */
   .burguer-menu{
     display: block;
@@ -532,7 +543,7 @@ Combinación de Medias Queries
     font-size: 1em;
   }
   .project-description{
-    font-size: .8em;
+    font-size: 1em;
   }
   .project-imageContainer{
     width: auto;
@@ -552,7 +563,7 @@ Combinación de Medias Queries
     font-size: 1.5em;
   }
   .project-details{
-    font-size: 12px;
+    font-size: 14px;
   }
   .event-detail{
     margin: -2em .5em .5em;
@@ -574,6 +585,11 @@ Combinación de Medias Queries
     display: block;
     text-align: center;
     border: 1px solid transparent
+  }
+  .social-link{
+    width: 40px;
+    height: 40px;
+    background-size: 100%;
   }
 }
 

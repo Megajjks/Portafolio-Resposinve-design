@@ -460,9 +460,31 @@ Combinación de Medias Queries
 }
 
 @media screen and (max-width: 767px){
+  /* Creando el menu hamburguesa */
   .burguer-menu{
     display: block;
   }
+  .menu{
+    position: fixed;
+    /* Gradiente */
+    background: #373B44;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4286f4ea, rgba(55, 59, 68, 0.925));  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4286f4ea, rgba(55, 59, 68, 0.925)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    z-index: 3;
+    top: 0;
+    left: -100vw;
+    width: 100vw;
+    /* height: 100vh; */
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .3s;
+  }
+  .menu.is-active{
+    left: 0;
+  }
+
   .header{
     display: block;
     height: auto;
@@ -475,6 +497,13 @@ Combinación de Medias Queries
   }
   .header a{
     justify-content: center;
+    height: 40px;
+    font-size: 2em;
+    margin-bottom: .5em;
+  }
+  .header a:hover{
+    transition: .3s;
+    text-decoration: underline;
   }
   .header .logo{
     text-align: center;

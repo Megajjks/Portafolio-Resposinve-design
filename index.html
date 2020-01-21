@@ -15,7 +15,7 @@
     </style> -->
   </head>
   <body>
-     <i class="icon-menu burguer-menu"></i>  <!--Se usa para definiar una italica pero nuestro icono en fuente no tiene aquello así que no pasa nada, tambien puede ser con el tag span-->
+     <i class="icon-menu burguer-menu" id="burger-menu"></i>  <!--Se usa para definiar una italica pero nuestro icono en fuente no tiene aquello así que no pasa nada, tambien puede ser con el tag span-->
     <header class="header">
       <div class="container">
         <figure class="logo">
@@ -154,5 +154,37 @@
         </div>
       </div>
     </footer>
-  </body>
+    <script>
+
+      const menu = document.querySelector('.menu');
+      const burgerbutton = document.querySelector('#burger-menu')
+      const ipad =window.matchMedia('screen and (max-width: 767px)')      
+
+      //declarando la función que valida si la clase se pone o no  usando arrowfunction
+      const hideshow = () =>{
+        if(!(menu.classList.contains('is-active'))){ //Sino tiene la clase is-active agregala y si la tiene remuevela
+          menu.classList.add('is-active')
+        } 
+        else{
+          menu.classList.remove('is-active')
+        }
+      }
+
+      //Validamos que estemos en una pantalla de 767px para usar las acciones del buton      
+      const validation = (event) =>{
+        if(event.matches){
+          //Agregamos el evento para que escuche cuando haga un click la función recibe dos parametros
+          // lo que quiere que se escuche y que va a pasar (una función)
+          //en este caso ponemos click ya que eso queremos escuchar y en el otro la función
+          burgerbutton.addEventListener('click', hideshow );
+        }else{
+          burgerbutton.removeEventListener('click', hideshow );
+        }
+        console.log(event.matches)
+      }
+
+      //agregando un escuchador a nuestra variable que se encargara de saber si esta en una resolución de 767px
+      ipad.addListener(validation)
+
+    </script>
 </html>
